@@ -42,3 +42,19 @@ Why?
 ----
 
 The active property allows the message function to control which vertices are processed, allowing the message object to propogate information or gather it for as long as there are active vertices. This way a function can be written to selectively process the values of the vertices while keeping a tally of the result, only stopping when some pre-defined condition is met. Because the message object has access to each vertex, the messagePass method can be used to selectively mutate vertices or re-activate the neighbors of the current vertex. There's probably a lot that could be done, but I reccommend starting with the basic message objects 'message' and 'mostEdges'. 
+
+mostEdges use example:
+```javascript
+var graph = new Graph();
+graph.addNode(1);
+graph.addNode(2);
+graph.addNode(3);
+graph.addNode(4);
+graph.addNode(5);
+graph.addEdge(2,3);
+graph.addEdge(3,4);
+graph.addEdge(4,5);
+graph.addEdge(4,2);
+graph.addEdge(4,1);
+graph.messagePass(mostEdges(0)) //=> { max: 4, node: {value: 4, ...} }
+```
